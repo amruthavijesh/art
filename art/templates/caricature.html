@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+
+    <div class="row" style="margin-left: 400px;">
+        {% for x in data|slice:"5:" %}
+        <div class="col-md-3">
+            <img src="{{ x.Caricature_Img.url }}" alt="Image" class="img-fluid tm-img-tn" style="border: 2px inset brown;height: 400px;width: 300px;margin-bottom: 20px;">
+            
+        </div>
+        {% endfor %} 
+    </div>
+            
+            
+                
+            
+     
+
+
+{% endblock %}

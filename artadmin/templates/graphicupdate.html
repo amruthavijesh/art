@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block content%}
+<div style="border:2px ridge brown;margin-left: 400px; height: 300px;width: 500px;padding: 50px;">
+<form action="" method="post" enctype="multipart/form-data" >
+    {% csrf_token %}
+    <table>
+        <tr>
+            <td>{{form.as_table}}</td>
+        </tr>
+    </table>
+    <input type="submit" value="UPDATE">
+</form>
+</div>
+
+{% endblock %}

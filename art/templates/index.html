@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+
+                    <!-- Right column: content -->
+                    <div class="tm-right-column">
+                        <figure>
+                            <img src="{% static 'img/nurses day.jpg' %}" alt="Header image" class="img-fluid">    
+                        </figure>
+
+                        <div class="tm-content-div">
+                            <!-- Welcome section -->
+                            <section id="welcome" class="tm-section">
+                                <header>
+                                    <h2 class="tm-blue-text tm-welcome-title tm-margin-b-45">Welcome to My Art Gallerry</h2>
+                                </header>
+                                <p>Neaty is simple and clean design HTML CSS template for any kind of website. Feel free to use this layout. Please tell your friends about TemplateMo website. Thank you. Suspendisse imperdiet, felis eu hendrerit pretium, sapien mauris blandit arcu, et accumsan neque est ut erat. Vivamus eget tellus euismod, interdum nibh at, eleifend justo. Quisque placerat ante in ex tempor, ultrices bibendum nunc finibus. Etiam luctus nec eros vel pulvinar.</p>
+                            </section>
+                            <!-- About section -->
+                            <section id="about" class="tm-section">
+                                <div class="row">                                                                
+                                    <div class="col-lg-8 col-md-7 col-sm-12 col-xs-12 push-lg-4 push-md-5">
+                                        <header>
+                                            <h2 class="tm-blue-text tm-section-title tm-margin-b-45">About me</h2>
+                                        </header>
+                                        <p>Sed turpis nunc, laoreet sit amet fermentum sed, euismod ac justo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+                                        <p>Donec ut lectus semper, sollicitudin risus blandit, mattis felis. Nam non malesuada odio. Vestibulum vaius, arcu eget rutrum consequat, arcu lacus imperdiet arcu, id pulvinar arcu erat vel magna.</p>
+                                         <!-- <a href="#" class="tm-button tm-button-wide">Read More</a>   -->
+                                    </div>
+
+                                    <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12 pull-lg-8 pull-md-7 tm-about-img-container">
+                                        <img src="{% static 'img/v.jpg' %}" alt="Image" class="img-fluid">    
+                                    </div>  
+                                </div>                            
+                            </section>  
+
+                            <!-- Gallery One section -->     
+                            <section id="galleryone" class="tm-section">
+                                <header><h2 class="tm-blue-text tm-section-title tm-margin-b-30"><a href="{% url 'art:caricature' %}">Caricature</a></h2></header>
+                                <div class="tm-gallery-container tm-gallery-1">
+                                    {% for x in data1|slice:":5" %}
+                                    <div class="tm-img-container tm-img-container-1" style="padding: 10px;">
+                                        <img src="{{ x.Caricature_Img.url }}" alt="Image" class="img-fluid tm-img-tn" style="border: 2px inset brown;height:250px; width:300px;">    
+                                    </div> 
+                                    {% endfor %}                                
+                                </div>
+                            </section>
+
+                            <!-- Second Gallery section -->     
+                            <section id="secondgallery" class="tm-section">
+                                <header><h2 class="tm-blue-text tm-section-title tm-margin-b-30"><a href="{% url 'art:graphic' %}">Graphic</a></h2></header>
+                                
+                                <div class="tm-gallery-container tm-gallery-1">
+                                    
+                                    <div  style="padding: 10px;">{% for x in data3|slice:":2" %}
+                                        <img src="{{ x.Graphic_Img.url }}" alt="Image" style="border: 2px inset brown;height:250px; width:372px;">    
+                                        {% endfor %}      </div> 
+                                                                 
+                                </div>
+                            </section>
+
+                            <!-- Third Gallery section -->     
+                            <section id="thirdgallery" class="tm-section">
+                                <header><h2 class="tm-blue-text tm-section-title tm-margin-b-30"><a href="{% url 'art:portrait' %}">Portrait</a></h2></header>
+                                <div class="tm-gallery-container tm-gallery-1">
+                                    {% for x in data2|slice:":4" %}
+                                    <div class="tm-img-container tm-img-container-1" style="padding: 10px;">
+                                        <img src="{{ x.Portrait_Img.url }}" alt="Image" class="img-fluid tm-img-tn" style="border: 2px inset brown;height:250px; width:400px;">    
+                                    </div> 
+                                    {% endfor %}                                
+                                </div>
+                            </section>
+                            
+                            <!-- Fourth Gallery section -->     
+                            <section id="fourthgallery" class="tm-section">
+                                <header><h2 class="tm-blue-text tm-section-title tm-margin-b-30"><a href="{% url 'art:illustration' %}">Illustration</a></h2></header>
+                                <div class="tm-gallery-container tm-gallery-1">
+                                    {% for x in data4|slice:":5" %}
+                                    <div class="tm-img-container tm-img-container-1" style="padding: 10px;">
+                                        <img src="{{ x.Illustration_Img.url }}" alt="Image" class="img-fluid tm-img-tn" style="border: 2px inset brown;height:250px; width:300px;">    
+                                    </div> 
+                                    {% endfor %}                                
+                                </div>
+                            </section>
+<br>
+                            <!-- Contact Us section -->
+                            <section id="contact" class="tm-section">
+                                <header><h2 class="tm-blue-text tm-section-title tm-margin-b-30">Contact Us</h2></header>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <form action="{% url 'art:mail' %}" method="post" class="contact-form">
+                                            {% csrf_token %}
+                                            <div class="form-group">
+                                                <input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name"  required/>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email"  required/>
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea id="contact_message" name="contact_message" class="form-control" rows="9" placeholder="Message" required></textarea>
+                                            </div>                                            
+                                            <button type="submit" class="float-right tm-button">Send</button>
+                                        </form>    
+                                    </div>
+                                    
+                                    <div class="col-lg-6 tm-contact-right">
+                                        
+                                        <address style="color: brown;">
+                                            VIJESH P P,<br>
+                                            VISWAM,<br>
+                                            PODUVACHERRY<br>
+                                            KANNUR-670621
+                                        </address>
+                                    </div>
+                                </div>
+                                
+                            </section>
+                            <footer>
+                                <p class="tm-copyright-p">Copyright &copy; <span class="tm-current-year">2022</span> artgallerry 
+                                
+                                | Designed by amruthavijesh</p>
+                            </footer>
+                        </div>  
+                        
+                    </div> <!-- Right column: content -->
+{% endblock %}

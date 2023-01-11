@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+{% extends 'adminbase.html' %}
+{% load static %}
+{% block content%}
+<div style="margin-left: 400px; height: 350px;width: 500px;padding: 50px;">
+    <h4 style="text-decoration: underline;"><i></i>View Contacted Details</h4>
+    <a href="{% url 'artadmin:viewcontactus' %}">
+        <button class="btn btn-sm btn-success">
+            VIEW
+        </button>
+    </a>
+    </div>
+{% endblock %}
